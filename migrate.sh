@@ -49,11 +49,12 @@ for containerName in $containerNames; do
   for volumeName in $volumeNames; do
     # Check if the volume name is not empty
     if [ -n "$volumeName" ]; then
-      # Add the volume path to the volume paths string
-      volumePaths+=" /var/lib/docker/volumes/$volumeName"
+      echo "Adding path: /var/lib/docker/volumes/$volumeName"
+      volumePaths="$volumePaths /var/lib/docker/volumes/$volumeName"
     fi
   done
 done
+
 
 # Calculate the total size of the volumes
 # shellcheck disable=SC2086
